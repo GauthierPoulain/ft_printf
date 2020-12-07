@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
 INCLUDES = ./includes
 
 OBJS = $(SRCS:%.c=%.p)
-SRCS = 
+SRCS = \
 
 %.o: %.c $(INCLUDES)
 	@printf "[ .. ] compile : $(_BOLD)$(<:.c=)$(_END)"
