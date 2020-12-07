@@ -42,7 +42,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft
-	
+
 
 clean:
 	$(MAKE) -C ./libft
@@ -52,3 +52,9 @@ clean:
 fclean: clean
 	$(MAKE) fclean -C ./libft
 	$(RM) $(NAME)
+
+update:
+	git pull
+	git pull --recurse-submodules
+
+re: fclean all
