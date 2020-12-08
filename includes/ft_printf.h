@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:30:41 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/08 11:55:18 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 11:58:03 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@
 # include <stdio.h>
 
 //------------------
+
+int		ft_printf(const char *s, ...);
 
 #endif

@@ -6,7 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:29:03 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/08 11:29:04 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 11:57:57 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+int		ft_printf(const char *s, ...)
+{
+	
+}
