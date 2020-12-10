@@ -26,24 +26,32 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
 
 INCLUDES = ./includes
+SRC_DIR = ./src/
 
-OBJS = $(SRCS:%.c=%.p)
+OBJS = $(SRCS:%.c=%.o)
 SRCS = \
+	${SRC_DIR}ft_printf.c \
 
 %.o: %.c $(INCLUDES)
+	$(MAKE) -C ./libft
 	@printf "[ .. ] compile : $(_BOLD)$(<:.c=)$(_END)"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -Llibft/ -lft -c $< -o $@
 	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C ./libft
+	@printf "[ .. ] building ${NAME}$(_END)"
+	@$(AR) rc $(NAME) $(OBJS)
+	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
+	@printf "[ .. ] creating index$(_END)"
+	@ranlib $(NAME)
+	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
 
 
 clean:
 	$(MAKE) clean -C ./libft
-	# $(RM)
+	$(RM) ${SRC_DIR}*.o
 
 fclean: clean
 	$(MAKE) fclean -C ./libft
@@ -54,3 +62,7 @@ update:
 	git pull --recurse-submodules
 
 re: fclean all
+
+test: all
+	${CC} ${CFLAGS} -L. -lftprintf main.c
+	./a.out

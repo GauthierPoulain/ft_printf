@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 11:30:41 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/10 12:41:10 by gapoulai         ###   ########lyon.fr   */
+/*   Created: 2020/12/10 12:40:22 by gapoulai          #+#    #+#             */
+/*   Updated: 2020/12/10 12:41:32 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
-# include <stdio.h>
-# include <stddef.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include "../libft/libft.h"
-
-//------------------ DEV
-
-# include <stdio.h>
-
-//------------------
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 int		ft_printf(const char *s, ...);
 
