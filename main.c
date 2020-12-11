@@ -20,7 +20,12 @@ int		main(void)
 	char *pointer;
 
 	pointer = malloc(1);
-	// ft_printf("char = %c\n", 'a');
+	ft_printf("char = %c\n", 'a');
+	ft_printf("char = %10c\n", 'a');
+	ft_printf("char = %-10c\n", 'a');
+
+
+
 	// ft_printf("string = %s\n", "hello world");
 	// ft_printf("int = %d\n", 42);
 	// ft_printf("int = %i\n", 42);

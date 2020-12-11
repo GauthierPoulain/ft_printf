@@ -23,7 +23,7 @@ _IWHITE=\033[47m
 NAME = libftprintf.a
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
+CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3 -g
 
 INCLUDES = ./includes
 SRC_DIR = ./src/
@@ -31,6 +31,8 @@ SRC_DIR = ./src/
 OBJS = $(SRCS:%.c=%.o)
 SRCS = \
 	${SRC_DIR}ft_printf.c \
+	${SRC_DIR}print_pointer_adress.c \
+	${SRC_DIR}types_print.c \
 
 %.o: %.c $(INCLUDES)
 	@printf "[ .. ] compile : $(_BOLD)$(<:.c=)$(_END)"
@@ -65,5 +67,6 @@ fclean: clean
 re: fclean all
 
 test: all
-	@${CC} ${CFLAGS} -L. -lftprintf main.c
+	@printf "run test \n"
+	@${CC} ${CFLAGS} main.c -L. -lftprintf
 	@./a.out

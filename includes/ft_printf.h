@@ -25,6 +25,16 @@
 # define HEXA_BASE "0123456789abcdef"
 # define HEXA_BASE_CAPS "0123456789ABCDEF"
 
+typedef struct		s_flags
+{
+	int				justify_left;
+	int				width;
+
+}					t_flags;
+
 int		ft_printf(const char *s, ...);
+size_t	print_pointer_adress(void *element, int fd);
+size_t	print_char(void *element, int fd);
+size_t	print_string(void *element, int fd);
 
 #endif
