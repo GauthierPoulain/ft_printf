@@ -42,7 +42,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft
 	@cp libft/libft.a $(NAME)
-	@printf "[ .. ] building ${NAME}$(_END)"
+	@printf "[ .. ] building $(NAME)$(_END)"
 	@$(AR) rc $(NAME) $(OBJS)
 	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
 	@printf "[ .. ] creating index$(_END)"
@@ -53,7 +53,7 @@ $(NAME): $(OBJS)
 clean:
 	@$(MAKE) clean -C ./libft
 	@printf "[ .. ] remove objects files$(_END)"
-	@$(RM) ${SRC_DIR}*.o
+	@$(RM) $(SRC_DIR)*.o
 	@printf "\r$(_RED)[ !! ]$(_END)\n"
 
 fclean: clean
@@ -61,12 +61,9 @@ fclean: clean
 	@printf "[ .. ] remove lib file$(_END)"
 	@$(RM) $(NAME)
 	@printf "\r$(_RED)[ !! ]$(_END)\n"
-update:
-	git pull
-	git pull --recurse-submodules
 
 re: fclean all
 
 test: all
-	${CC} ${CFLAGS} -L. -lftprintf main.c
-	./a.out
+	@${CC} ${CFLAGS} -L. -lftprintf main.c
+	@./a.out
