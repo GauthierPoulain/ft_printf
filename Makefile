@@ -33,14 +33,15 @@ SRCS = \
 	${SRC_DIR}ft_printf.c \
 
 %.o: %.c $(INCLUDES)
-	$(MAKE) -C ./libft
 	@printf "[ .. ] compile : $(_BOLD)$(<:.c=)$(_END)"
-	@$(CC) $(CFLAGS) -Llibft/ -lft -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	@$(MAKE) -C ./libft
+	@cp libft/libft.a $(NAME)
 	@printf "[ .. ] building ${NAME}$(_END)"
 	@$(AR) rc $(NAME) $(OBJS)
 	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
@@ -50,13 +51,16 @@ $(NAME): $(OBJS)
 
 
 clean:
-	$(MAKE) clean -C ./libft
-	$(RM) ${SRC_DIR}*.o
+	@$(MAKE) clean -C ./libft
+	@printf "[ .. ] remove objects files$(_END)"
+	@$(RM) ${SRC_DIR}*.o
+	@printf "\r$(_RED)[ !! ]$(_END)\n"
 
 fclean: clean
-	$(MAKE) fclean -C ./libft
-	$(RM) $(NAME)
-
+	@$(MAKE) fclean -C ./libft
+	@printf "[ .. ] remove lib file$(_END)"
+	@$(RM) $(NAME)
+	@printf "\r$(_RED)[ !! ]$(_END)\n"
 update:
 	git pull
 	git pull --recurse-submodules
