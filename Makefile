@@ -67,6 +67,7 @@ fclean: clean
 re: fclean all
 
 test: all
-	@printf "run test \n"
+	@printf "[ .. ] building test$(_END)"
 	@${CC} ${CFLAGS} main.c -L. -lftprintf
+	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
 	@./a.out

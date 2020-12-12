@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 12:38:00 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/11 13:27:34 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/12 13:17:27 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@
 int		main(void)
 {
 	char *pointer;
+	setbuf(stdout, NULL);
 
 	pointer = malloc(1);
 	ft_printf("char = %c\n", 'a');
 	ft_printf("char = %10c\n", 'a');
 	ft_printf("char = %-10c\n", 'a');
-
-
-
 	// ft_printf("string = %s\n", "hello world");
 	// ft_printf("int = %d\n", 42);
 	// ft_printf("int = %i\n", 42);
@@ -33,7 +31,7 @@ int		main(void)
 	// ft_printf("percent = %%\n");
 	// ft_printf("hexa = %x\n", 42);
 	// ft_printf("caps hexa = %X\n", 42);
-	ft_printf("pointer = %p\n", pointer);
-	printf("pointer = %p\n", pointer);
+	// ft_printf("pointer = %p\n", pointer);
+	// printf("pointer = %p\n", pointer);
 	return (0);
 }

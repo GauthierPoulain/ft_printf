@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:29:03 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/11 13:31:28 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/12 13:25:09 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static size_t	print_type(char type, void *element, int fd)
 	return (0);
 }
 
-t_flags		*get_flags(char **s)
+t_flags		*get_flags(const char *s)
 {
 	size_t	i;
 	t_flags	*flags;
@@ -57,52 +57,58 @@ t_flags		*get_flags(char **s)
 		return (NULL);
 	flags->width = -1;
 	flags->justify_left = 0;
-	while (!ft_ischarset(*s[i], "cspduxX%"))
+	while (!ft_ischarset(s[i], "cspduxX%"))
 	{
 		if (flags->width == -1)
 		{
 			ft_putnbr_fd(i, 1);
-			while (ft_isdigit(*s[i]))
+			while (ft_isdigit(s[i]))
 			{
 				flags->width *= 10;
-				flags->width = flags->width + (*s[i] + '0');
+				flags->width = flags->width + (s[i] + '0');
 				i++;
 			}
 		}
-		if (*s[i] == '-')
+		if (s[i] == '-')
 			flags->justify_left = 1;
 		i++;
 	}
-	s = &s[i];
 	return (flags);
+}
+
+static size_t	get_flags_len(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (!ft_ischarset(s[i], "cspduxX%"))
+		i++;
+	return (i);
 }
 
 int				ft_printf(const char *s, ...)
 {
 	va_list		valist;
-	char		current;
 	size_t		len;
 	t_flags		*flags;
-	char		*cast;
 
-	cast = (char *)s;
 	len = 0;
 	va_start(valist, s);
-	while ((current = *cast))
+	while (*s)
 	{
-		if (current == '%')
+		if (*s == '%')
 		{
-			cast++;
-			flags = get_flags(&cast);
-			ft_putchar_fd('1', 1);
-			len += print_type(*cast, va_arg(valist, void*), 1);
+			s++;
+			flags = get_flags(s);
+			s += get_flags_len(s);
+			len += print_type(*s, va_arg(valist, void*), 1);
 		}
 		else
 		{
-			ft_putchar_fd(current, 1);
+			ft_putchar_fd(*s, 1);
 			len++;
 		}
-		cast++;
+		s++;
 	}
 	free(flags);
 	return (len);
