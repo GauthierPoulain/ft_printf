@@ -27,14 +27,23 @@
 
 typedef struct		s_flags
 {
+	int				fill_zero;
 	int				justify_left;
-	int				width;
+	size_t			width;
 
 }					t_flags;
 
 int		ft_printf(const char *s, ...);
 size_t	print_pointer_adress(void *element, int fd);
-size_t	print_char(void *element, int fd);
+size_t	print_char(void *element, t_flags *flags, int fd);
 size_t	print_string(void *element, int fd);
+
+
+size_t		print_int(int nb, t_flags *flags, int fd);
+
+void		fill(int zero, size_t size, int fd);
+
+int			check_flags(const char *s);
+t_flags		*get_flags(const char *s);
 
 #endif

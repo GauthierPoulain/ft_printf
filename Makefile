@@ -24,50 +24,52 @@ NAME = libftprintf.a
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3 -g
+MAKE = make --no-print-directory
 
 INCLUDES = ./includes
-SRC_DIR = ./src/
+SRC_DIR = src
 
-OBJS = $(SRCS:%.c=%.o)
-SRCS = \
-	${SRC_DIR}ft_printf.c \
-	${SRC_DIR}print_pointer_adress.c \
-	${SRC_DIR}types_print.c \
+SRC = \
+	ft_printf.c \
+	flags.c \
+	print_int.c \
+	printf_utils.c \
+	print_pointer_adress.c \
+	types_print.c \
 
-%.o: %.c $(INCLUDES)
-	@printf "[ .. ] compile : $(_BOLD)$(<:.c=)$(_END)"
+SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
+OBJS = $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(basename $(SRC))))
+
+$(SRC_DIR)/%.o: ${SRC_DIR}/%.c $(INCLUDES)
+	@printf "$(_GREEN)$(_BOLD)+$(_END) compiling $(_BLUE)$(_BOLD)$<$(_END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft
+	@printf "$(_PURPLE)$(_BOLD)🠖$(_END) copying $(_BLUE)$(_BOLD)libft/libft.a$(_END) to $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
 	@cp libft/libft.a $(NAME)
-	@printf "[ .. ] building $(NAME)$(_END)"
-	@$(AR) rc $(NAME) $(OBJS)
-	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
-	@printf "[ .. ] creating index$(_END)"
-	@ranlib $(NAME)
-	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
+	@printf "$(_GREEN)$(_BOLD)+$(_END) building $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
+	@$(AR) rcs $(NAME) $(OBJS)
 
 
 clean:
 	@$(MAKE) clean -C ./libft
-	@printf "[ .. ] remove objects files$(_END)"
-	@$(RM) $(SRC_DIR)*.o
-	@printf "\r$(_RED)[ !! ]$(_END)\n"
+	@printf "$(_RED)$(_BOLD)-$(_END) remove $(_BLUE)$(_BOLD)$(NAME)$(_END) objects files\n"
+	@$(RM) $(OBJS)
 
 fclean: clean
 	@$(MAKE) fclean -C ./libft
-	@printf "[ .. ] remove lib file$(_END)"
+	@printf "$(_RED)$(_BOLD)-$(_END) remove $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
 	@$(RM) $(NAME)
-	@printf "\r$(_RED)[ !! ]$(_END)\n"
 
-re: fclean all
+re: fclean
+	@$(MAKE) all
 
 test: all
-	@printf "[ .. ] building test$(_END)"
-	@${CC} ${CFLAGS} main.c -L. -lftprintf
-	@printf "\r$(_GREEN)[ OK ]$(_END)\n"
-	@./a.out
+	@printf "$(_GREEN)$(_BOLD)+$(_END) building test\n"
+	@${CC} ${CFLAGS} main.c -L. -lftprintf -o test
+	@printf "$(_BLUE)$(_BOLD)⚙$(_END) processing test\n"
+	@./test
+	@printf "$(_GREEN)$(_BOLD)✔$(_END) test done\n"

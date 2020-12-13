@@ -6,13 +6,13 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:29:03 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/12 13:25:09 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 17:09:02 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-size_t	count_va_args(const char *s)
+size_t			count_va_args(const char *s)
 {
 	int		count;
 	int		i;
@@ -25,65 +25,27 @@ size_t	count_va_args(const char *s)
 	return (count);
 }
 
-static size_t	print_type(char type, void *element, int fd)
+static size_t	print_type(char type, void *element, t_flags *flags, int fd)
 {
 	if (type == 'c')
-		return (print_char(element, fd));
-	else if (type == 's')
-		return (print_string(element, fd));
-	else if (type == 'p')
-		return (print_pointer_adress(element, fd));
-	else if (type == 'd' || type == 'i')
-		ft_putnbr_fd((int)element, fd);
-	else if (type == 'u')
-		ft_putnbr_fd((unsigned int)element, fd);
-	else if (type == 'x')
-		ft_putstr_fd(ft_convert_base((char *)element, DECIMAL, HEXA_BASE), fd);
-	else if (type == 'X')
-		ft_putstr_fd(ft_convert_base((char *)element, DECIMAL, HEXA_BASE_CAPS),
-		fd);
-	else if (type == '%')
-		ft_putchar_fd('%', fd);
+		return (0);
+	if (type == 's')
+		return (0);
+	if (type == 'p')
+		return (0);
+	if (type == 'd')
+		return (print_int((int)element, flags, fd));
+	if (type == 'i')
+		return (0);
+	if (type == 'u')
+		return (0);
+	if (type == 'x')
+		return (0);
+	if (type == 'X')
+		return (0);
+	if (type == '%')
+		return (0);
 	return (0);
-}
-
-t_flags		*get_flags(const char *s)
-{
-	size_t	i;
-	t_flags	*flags;
-
-	i = 0;
-	if (!(flags = malloc(sizeof(t_flags))))
-		return (NULL);
-	flags->width = -1;
-	flags->justify_left = 0;
-	while (!ft_ischarset(s[i], "cspduxX%"))
-	{
-		if (flags->width == -1)
-		{
-			ft_putnbr_fd(i, 1);
-			while (ft_isdigit(s[i]))
-			{
-				flags->width *= 10;
-				flags->width = flags->width + (s[i] + '0');
-				i++;
-			}
-		}
-		if (s[i] == '-')
-			flags->justify_left = 1;
-		i++;
-	}
-	return (flags);
-}
-
-static size_t	get_flags_len(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (!ft_ischarset(s[i], "cspduxX%"))
-		i++;
-	return (i);
 }
 
 int				ft_printf(const char *s, ...)
@@ -96,12 +58,14 @@ int				ft_printf(const char *s, ...)
 	va_start(valist, s);
 	while (*s)
 	{
-		if (*s == '%')
+		// if (*s == '%')
+		// 	printf("%d\n", check_flags(s + 1));
+		if (*s == '%' && check_flags(s + 1) != -1)
 		{
 			s++;
 			flags = get_flags(s);
-			s += get_flags_len(s);
-			len += print_type(*s, va_arg(valist, void*), 1);
+			s += check_flags(s);
+			len += print_type(*s, va_arg(valist, void*), flags, 1);
 		}
 		else
 		{

@@ -14,16 +14,29 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define TEST " %15d ", 0
 
 int		main(void)
 {
+	int		buff;
 	char *pointer;
 	setbuf(stdout, NULL);
 
 	pointer = malloc(1);
-	ft_printf("char = %c\n", 'a');
-	ft_printf("char = %10c\n", 'a');
-	ft_printf("char = %-10c\n", 'a');
+
+	printf("|");
+	buff = printf(TEST);
+	printf("|\n");
+	printf("return = %d\n", buff);
+	printf("|");
+	buff = ft_printf(TEST);
+	printf("|\n");
+	printf("return = %d\n", buff);
+	// printf("%.-1d\n");
+	// printf(TEST);
+	// ft_printf("char = %c\n", 'a');
+	// ft_printf("char = %10c\n", 'a');
+	// ft_printf("char = %-10c\n", 'a');
 	// ft_printf("string = %s\n", "hello world");
 	// ft_printf("int = %d\n", 42);
 	// ft_printf("int = %i\n", 42);
@@ -33,5 +46,6 @@ int		main(void)
 	// ft_printf("caps hexa = %X\n", 42);
 	// ft_printf("pointer = %p\n", pointer);
 	// printf("pointer = %p\n", pointer);
+	free(pointer);
 	return (0);
 }
