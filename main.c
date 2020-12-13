@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define TEST " %15d ", 0
+#define TEST " %.d ", 54
 
 int		main(void)
 {

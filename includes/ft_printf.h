@@ -27,10 +27,11 @@
 
 typedef struct		s_flags
 {
-	int				fill_zero;
+	int				zero_size;
+	int				space_before;
+	int				space_after;
 	int				justify_left;
 	size_t			width;
-
 }					t_flags;
 
 int		ft_printf(const char *s, ...);
