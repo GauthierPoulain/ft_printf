@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:29:03 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/13 17:09:02 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 21:14:20 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ static size_t	print_type(char type, void *element, t_flags *flags, int fd)
 int				ft_printf(const char *s, ...)
 {
 	va_list		valist;
-	size_t		len;
+	int			len;
 	t_flags		*flags;
+	int			tmp;
 
 	len = 0;
 	va_start(valist, s);
@@ -60,12 +61,19 @@ int				ft_printf(const char *s, ...)
 	{
 		// if (*s == '%')
 		// 	printf("%d\n", check_flags(s + 1));
-		if (*s == '%' && check_flags(s + 1) != -1)
+		if (*s == '%' && get_flag_len(s + 1) != -1)
 		{
 			s++;
-			flags = get_flags(s);
-			s += check_flags(s);
-			len += print_type(*s, va_arg(valist, void*), flags, 1);
+			if (check_flags(s))
+			{
+			if (!(flags = get_flags(s)))
+				return (0);
+			tmp = print_type(*s, va_arg(valist, void *), flags, 1);
+			len += tmp;
+			if (tmp == -1)
+				return (0);	
+			}
+			s += get_flag_len(s);
 		}
 		else
 		{

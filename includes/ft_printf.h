@@ -28,10 +28,8 @@
 typedef struct		s_flags
 {
 	int				zero_size;
-	int				space_before;
-	int				space_after;
+	int				total_size;
 	int				justify_left;
-	size_t			width;
 }					t_flags;
 
 int		ft_printf(const char *s, ...);
@@ -46,5 +44,6 @@ void		fill(int zero, size_t size, int fd);
 
 int			check_flags(const char *s);
 t_flags		*get_flags(const char *s);
+int			get_flag_len(const char *s);
 
 #endif
