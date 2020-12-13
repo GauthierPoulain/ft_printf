@@ -1,6 +1,7 @@
 *.o
 *.a
 a.out
+test
 libft/
 42TESTERS-PRINTF/
 printftester/
