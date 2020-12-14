@@ -48,7 +48,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft
-	@printf "$(_PURPLE)$(_BOLD)🠖$(_END) copying $(_BLUE)$(_BOLD)libft/libft.a$(_END) to $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
+	@printf "$(_PURPLE)$(_BOLD)*$(_END) copying $(_BLUE)$(_BOLD)libft/libft.a$(_END) to $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
 	@cp libft/libft.a $(NAME)
 	@printf "$(_GREEN)$(_BOLD)+$(_END) building $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
 	@$(AR) rcs $(NAME) $(OBJS)
@@ -70,6 +70,6 @@ re: fclean
 test: all
 	@printf "$(_GREEN)$(_BOLD)+$(_END) building test\n"
 	@${CC} ${CFLAGS} main.c -L. -lftprintf -o test
-	@printf "$(_BLUE)$(_BOLD)⚙$(_END) processing test\n"
+	@printf "$(_BLUE)$(_BOLD)>$(_END) processing test\n"
 	@./test
 	@printf "$(_GREEN)$(_BOLD)✔$(_END) test done\n"
