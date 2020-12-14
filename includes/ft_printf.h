@@ -45,5 +45,6 @@ void		fill(int zero, size_t size, int fd);
 int			check_flags(const char *s);
 t_flags		*get_flags(const char *s);
 int			get_flag_len(const char *s);
+char *get_flag_str(const char *s);
 
 #endif

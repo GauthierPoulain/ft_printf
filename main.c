@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 12:38:00 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/13 21:24:55 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 11:53:31 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define TEST " %.-10 %d", 54 ,55
+#define TEST " %cd   %d %d " ,55
 
 int		main(void)
 {

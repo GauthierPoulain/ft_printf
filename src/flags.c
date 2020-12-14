@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 15:42:13 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/13 21:17:10 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 12:27:13 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,18 +100,6 @@ static int	get_justify(const char *s)
 	
 // }
 
-int		get_flag_len(const char *s)
-{
-	int		i;
-
-	i = 0;
-	while (s[i] && !ft_ischarset(s[++i], "cspdiuxX%"))
-		i++;
-	if (!s[i])
-		return (-1);
-	return (i);
-}
-
 int		print_invalid_flag(const char *s, int fd)
 {
 	char	*tmp;
@@ -156,4 +144,31 @@ t_flags		*get_flags(const char *s)
 	
 
 	return (flags);
+}
+
+int		get_flag_len(const char *s)
+{
+	int		i;
+	int		toggle;
+
+	toggle = 0;
+	i = 0;
+	while (s[i] && ((!toggle && ft_ischarset(s[i], " .")) || ft_ischarset(s[i], "-0123456789")))
+		{
+			if (ft_ischarset(s[i], "."))
+				toggle = 1;
+			i++;
+		}
+	return (i);
+}
+
+
+char		*get_flag_str(const char *s)
+{
+	char	*str;
+
+	if (!(str = ft_strndup(s, get_flag_len(s))))
+		return (NULL);
+	// printf("str = %s|", str);
+	return (str);
 }
