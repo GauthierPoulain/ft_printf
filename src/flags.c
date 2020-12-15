@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 15:42:13 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/15 10:28:16 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 11:41:34 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,24 @@ t_flags		*get_flags(const char *s)
 	return (flags);
 }
 
-int			get_flag_len(const char *s)
-{
-	int		i;
-	int		toggle;
 
-	toggle = 0;
-	i = 0;
-	while (s[i])
-	{
+
+
+
+
+
+
+
+
+
+
+size_t		get_flag_len(const char *s)
+{
+	size_t	i;
+
+	i = 1;
+	while (s[i] && s[i] != '%' && !ft_isalpha(s[i]))
 		i++;
-	}
 	return (i);
 }
 

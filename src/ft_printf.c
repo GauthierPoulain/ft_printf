@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:29:03 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/15 09:48:01 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 11:02:27 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ int				ft_printf(const char *s, ...)
 		if (*s == '%')
 		{
 			// printf("len = %d|", get_flag_len(s));
-			ft_putchar_fd('|', 1);
-			ft_putstr_fd(get_flag_str(s), 1);
-			ft_putchar_fd('|', 1);
+			printf("|%s|", get_flag_str(s));
 			// s++;
 			// if (check_flags(s))
 			// {
@@ -83,8 +81,8 @@ int				ft_printf(const char *s, ...)
 		{
 			ft_putchar_fd(*s, 1);
 			len++;
+			s++;
 		}
-		s++;
 	}
 	// free(flags);
 	return (len);

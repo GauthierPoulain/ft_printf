@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:30:41 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/15 10:26:30 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 11:41:41 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		fill(int zero, size_t size, int fd);
 
 int			check_flags(const char *s);
 t_flags		*get_flags(const char *s);
-int			get_flag_len(const char *s);
+size_t		get_flag_len(const char *s);
 char *get_flag_str(const char *s);
 
 #endif
