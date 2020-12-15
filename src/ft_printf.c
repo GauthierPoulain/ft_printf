@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:29:03 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/14 12:28:04 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 09:48:01 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t			count_va_args(const char *s)
 {
-	int		count;
-	int		i;
+	int			count;
+	int			i;
 
 	count = 0;
 	i = -1;
@@ -75,7 +75,7 @@ int				ft_printf(const char *s, ...)
 			// tmp = print_type(*s, va_arg(valist, void *), flags, 1);
 			// len += tmp;
 			// if (tmp == -1)
-			// 	return (0);	
+				// return (0);	
 			// }
 			s += get_flag_len(s);
 		}

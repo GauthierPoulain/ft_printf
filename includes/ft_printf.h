@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 11:30:41 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/11 13:04:42 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 10:26:30 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		ft_printf(const char *s, ...);
 size_t	print_pointer_adress(void *element, int fd);
 size_t	print_char(void *element, t_flags *flags, int fd);
 size_t	print_string(void *element, int fd);
-
 
 size_t		print_int(int nb, t_flags *flags, int fd);
 
