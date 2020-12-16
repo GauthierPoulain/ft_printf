@@ -31,45 +31,40 @@ SRC_DIR = src
 
 SRC = \
 	ft_printf.c \
-	flags.c \
-	print_int.c \
-	printf_utils.c \
-	print_pointer_adress.c \
-	types_print.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(basename $(SRC))))
 
 $(SRC_DIR)/%.o: ${SRC_DIR}/%.c $(INCLUDES)
-	@printf "$(_GREEN)$(_BOLD)+$(_END) compiling $(_BLUE)$(_BOLD)$<$(_END)\n"
+	@printf "[ $(_GREEN)$(_BOLD)+$(_END) ][ compiling ] $(_BLUE)$(_BOLD)$<$(_END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME)
+all: libft $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft
-	@printf "$(_PURPLE)$(_BOLD)*$(_END) copying $(_BLUE)$(_BOLD)libft/libft.a$(_END) to $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
+	@printf "[ $(_PURPLE)$(_BOLD)>$(_END) ][ copying ] $(_BLUE)$(_BOLD)libft/libft.a$(_END) to $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
 	@cp libft/libft.a $(NAME)
-	@printf "$(_GREEN)$(_BOLD)+$(_END) building $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
+	@printf "[ $(_GREEN)$(_BOLD)+$(_END) ][ building ] $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
 	@$(AR) rcs $(NAME) $(OBJS)
 
-
 clean:
+	@find ./src -name "*.o" -delete -printf "[ $(_RED)$(_BOLD)-$(_END) ][ removing ] $(_BLUE)$(_BOLD)%f $(_END)\n"
 	@$(MAKE) clean -C ./libft
-	@printf "$(_RED)$(_BOLD)-$(_END) remove $(_BLUE)$(_BOLD)$(NAME)$(_END) objects files\n"
-	@$(RM) $(OBJS)
 
 fclean: clean
+	@find . -name "$(NAME)" -delete -printf "[ $(_RED)$(_BOLD)-$(_END) ][ removing ] $(_BLUE)$(_BOLD)%f $(_END)\n"
 	@$(MAKE) fclean -C ./libft
-	@printf "$(_RED)$(_BOLD)-$(_END) remove $(_BLUE)$(_BOLD)$(NAME)$(_END)\n"
-	@$(RM) $(NAME)
 
 re: fclean
 	@$(MAKE) all
 
 test: all
-	@printf "$(_GREEN)$(_BOLD)+$(_END) building test\n"
-	@${CC} ${CFLAGS} main.c -L. -lftprintf -o test
+	@$(MAKE) comp
 	@printf "$(_BLUE)$(_BOLD)>$(_END) processing test\n"
 	@./test
 	@printf "$(_GREEN)$(_BOLD)✔$(_END) test done\n"
+
+comp: all
+	@printf "$(_GREEN)$(_BOLD)+$(_END) building test\n"
+	@${CC} ${CFLAGS} main.c -L. -lftprintf -o test
