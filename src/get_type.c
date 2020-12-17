@@ -6,11 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 12:05:42 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 14:11:58 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 14:53:12 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 int		get_type(int c, t_flags flags, va_list lst)
 {

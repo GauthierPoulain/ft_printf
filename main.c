@@ -6,16 +6,17 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 12:38:00 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 14:51:41 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 14:57:19 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
-#define TEST "int = %-*.*d", 5, 6, 10
+#define TEST " --0*%0*.0d*0 0*%0*.10d*0-- ", -21, INT_MAX, 21, INT_MIN
 
 int		main(void)
 {

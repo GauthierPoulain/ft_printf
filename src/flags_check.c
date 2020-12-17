@@ -6,11 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 11:56:16 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 12:11:53 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 14:53:12 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 t_flags	init_flags(void)
 {

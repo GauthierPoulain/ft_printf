@@ -26,7 +26,7 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
 MAKE = make --no-print-directory
 
-HEADER = libftprintf.h
+HEADER = ft_printf.h
 SRC_DIR = src
 
 SRC = \
@@ -45,7 +45,7 @@ $(SRC_DIR)/%.o: ${SRC_DIR}/%.c $(HEADER)
 	@printf "[ $(_GREEN)$(_BOLD)>+$(_END) ][ compiling ] $(_BLUE)$(_BOLD)$<$(_END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: libft $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft

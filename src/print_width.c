@@ -6,11 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 12:24:21 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 12:42:10 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 14:53:12 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 int		print_width(int size, int minus, int zero)
 {

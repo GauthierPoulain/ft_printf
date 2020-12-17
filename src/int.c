@@ -6,11 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 12:21:00 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 14:08:18 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 14:53:12 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 static int	ft_in_put_part_int(char *d_i, int save_i, t_flags flags)
 {
@@ -48,7 +48,7 @@ static int	ft_put_part_int(char *d_i, int save_i, t_flags flags)
 
 int			ft_print_int(int i, t_flags flags)
 {
-	char	*d_i;
+	char *d_i;
 	int		save_i;
 	int		char_count;
 

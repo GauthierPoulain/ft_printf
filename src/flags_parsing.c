@@ -6,11 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 11:13:16 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 14:43:38 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 14:53:12 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 // int			ft_flag_dot(const char *save, int start,
 // 	t_flags *flags, va_list args)
@@ -45,7 +45,7 @@ int			ft_flag_dot(const char *s, t_flags *flags, va_list args)
 		i++;
 	}
 	else
-	{	
+	{
 		flags->dot = 0;
 		while (ft_isdigit(s[i]))
 			flags->dot = (flags->dot * 10) + (s[i++] - '0');
@@ -100,7 +100,7 @@ int			flag_parse(const char *s, t_flags *flags, va_list lst)
 		if (istype(s[i]))
 		{
 			flags->type = s[i];
-			break ;
+			break;
 		}
 		i++;
 	}
