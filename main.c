@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 12:38:00 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 15:40:49 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 20:52:10 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-#define TEST " --0*%0*.0d*0 0*%0*.10d*0-- ", -21, INT_MAX, 21, INT_MIN
+#define TEST " %-5.10d", 'a'
 
 int		main(void)
 {
