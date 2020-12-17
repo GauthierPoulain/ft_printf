@@ -71,5 +71,5 @@ test: comp
 	@printf "[ $(_GREEN)$(_BOLD):)$(_END) ][ done ] $(_BLUE)$(_BOLD)test$(_END)\n"
 
 comp: all
-	@printf "[ $(_BLUE)$(_GREEN)>+$(_END) ][ compiling ] $(_BLUE)$(_BOLD)test$(_END)\n"
+	@printf "[ $(_GREEN)$(_BOLD)>+$(_END) ][ compiling ] $(_BLUE)$(_BOLD)test$(_END)\n"
 	@${CC} ${CFLAGS} main.c -L. -lftprintf -o test
