@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 12:38:00 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/15 16:04:34 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/17 14:51:41 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define TEST "int = %-*.*d", 5, 6, 10
+
 int		main(void)
 {
 	int		buff;
@@ -22,12 +24,12 @@ int		main(void)
 
 	setbuf(stdout, NULL);
 	pointer = malloc(1);
-	printf("|");
-	buff = printf("int = %d", 42);
+	printf("real     = |");
+	buff = printf(TEST);
 	printf("|\n");
 	printf("return = %d\n", buff);
-	printf("|");
-	buff = ft_printf("int = %d", 42);
+	printf("le miens = |");
+	buff = ft_printf(TEST);
 	printf("|\n");
 	printf("return = %d\n", buff);
 	free(pointer);

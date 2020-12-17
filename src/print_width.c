@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_width.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 11:30:41 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/16 10:42:01 by gapoulai         ###   ########lyon.fr   */
+/*   Created: 2020/12/17 12:24:21 by gapoulai          #+#    #+#             */
+/*   Updated: 2020/12/17 12:42:10 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../libftprintf.h"
 
-# include <stddef.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
-# include "../libft/libft.h"
-
-# include <stdio.h>
-
-typedef struct		s_flags
+int		print_width(int size, int minus, int zero)
 {
+	int		len;
 
-}					t_flags;
-
-int					ft_printf(const char *s, ...);
-
-#endif
+	len = 0;
+	while (size - minus > 0)
+	{
+		if (zero)
+			ft_putchar_fd('0', 1);
+		else
+			ft_putchar_fd(' ', 1);
+		size--;
+		len++;
+	}
+	return (len);
+}

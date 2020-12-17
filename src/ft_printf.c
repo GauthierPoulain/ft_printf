@@ -5,33 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/16 10:58:38 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/16 12:08:31 by gapoulai         ###   ########lyon.fr   */
+/*   Created: 2020/12/17 10:14:44 by gapoulai          #+#    #+#             */
+/*   Updated: 2020/12/17 14:25:03 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../libftprintf.h"
 
-int					ft_printf(const char *s, ...)
+// va_arg(lst, void *)
+
+int				ft_printf(const char *s, ...)
 {
-	va_list		list;
-	size_t		len;
+	int		len;
+	t_flags	flags;
+	va_list	lst;
 
-	va_start(list, s);
+	va_start(lst, s);
 	len = 0;
 	while (*s)
 	{
 		if (*s == '%')
 		{
-			len += ft_putchar_fd(*s, 1);
+			flags = init_flags();
 			s++;
-			
+			s += flag_parse(s, &flags, lst);
+			// printf("[%c, %c, %d]", flags.type, *s, istype(*s));
+			if (istype(*s))
+				len += get_type((char)flags.type, flags, lst);
+			else if (*s)
+				len += ft_putchar_fd(*s, 1);
+			s++;
 		}
 		else
-		{
-			len += ft_putchar_fd(*s, 1);
-			s++;
-		}
+			len += ft_putchar_fd(*s++, 1);
 	}
+	va_end(lst);
 	return (len);
 }
