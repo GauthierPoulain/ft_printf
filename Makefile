@@ -73,3 +73,9 @@ test: comp
 comp: all
 	@printf "[ $(_GREEN)$(_BOLD)>+$(_END) ][ compiling ] $(_BLUE)$(_BOLD)test$(_END)\n"
 	@${CC} ${CFLAGS} main.c -L. -lftprintf -o test
+
+norm:
+	norminette **/**.[ch]
+	norminette *.[ch]
+
+.PHONY: all clean fclean re test comp norm
