@@ -37,6 +37,9 @@ SRC = \
 	print_int.c \
 	print_width.c \
 	print_int_utils.c \
+	print_char.c \
+	print_string.c \
+	print_pointer.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(basename $(SRC))))

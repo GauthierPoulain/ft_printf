@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/10 12:38:00 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/22 15:57:51 by gapoulai         ###   ########lyon.fr   */
+/*   Created: 2020/12/22 15:31:20 by gapoulai          #+#    #+#             */
+/*   Updated: 2020/12/22 15:55:41 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-
-#define TEST "%-10c%*c%c*",'0', 10, '1', '2'
-
-int		main(void)
+void		print_pointer(t_flags *flags, size_t adr)
 {
-	int		buff;
-	char	*pointer;
+	char	*tmp;
+	char	*tmp2;
 
-	setbuf(stdout, NULL);
-	pointer = malloc(1);
-	printf("printf :    [");
-	buff = printf(TEST);
-	printf("] = %d\n", buff);
-	printf("ft_printf : [");
-	buff = ft_printf(TEST);
-	printf("] = %d\n", buff);
-	free(pointer);
-	return (0);
+	tmp = ft_itoa(adr);
+	tmp2 = ft_convert_base(tmp, DECIMAL, BASE_HEXA);
+	free(tmp);
+	tmp = ft_strjoin("0x", tmp2);
+	free(tmp2);
+	print_string(flags, tmp);
+	free(tmp);
 }

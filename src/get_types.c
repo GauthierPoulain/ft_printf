@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:22:29 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/22 13:47:40 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/22 15:38:15 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void		get_type(t_flags *flags, va_list lst)
 {
 	if (flags->type == 'c')
-		return ;
+		print_char(flags, va_arg(lst, int));
 	if (flags->type == 's')
-		return ;
+		print_string(flags, va_arg(lst, char *));
 	if (flags->type == 'p')
-		return ;
+		print_pointer(flags ,va_arg(lst, size_t));
 	if (flags->type == 'd' || flags->type == 'i')
 		print_int(flags, va_arg(lst, int));
 	if (flags->type == 'u')
