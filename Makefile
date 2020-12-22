@@ -31,12 +31,12 @@ SRC_DIR = src
 
 SRC = \
 	ft_printf.c \
-	flags_parsing.c \
-	flags_check.c \
-	get_type.c \
+	flags_init.c \
+	parse_flags.c \
+	get_types.c \
+	print_int.c \
 	print_width.c \
-	char.c \
-	int.c \
+	print_int_utils.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(basename $(SRC))))

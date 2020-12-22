@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char.c                                             :+:      :+:    :+:   */
+/*   flags_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 12:21:09 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 14:53:12 by gapoulai         ###   ########lyon.fr   */
+/*   Created: 2020/12/22 10:40:44 by gapoulai          #+#    #+#             */
+/*   Updated: 2020/12/22 11:28:46 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		print_char(char c, t_flags flags)
+void		init_flags(t_flags *flags)
 {
-	int		len;
+	flags->dot = 0;
+	flags->has_dot = 0;
+	flags->len = 0;
+	flags->minus = 0;
+	flags->print = 0;
+	flags->star = 0;
+	flags->type = 0;
+	flags->width = 0;
+	flags->zero = 0;
+}
 
-	len = 0;
-	if (flags.minus)
-		ft_putchar_fd(c, 1);
-	len += print_width(flags.width, 1, 0);
-	if (!flags.minus)
-		ft_putchar_fd(c, 1);
-	return (len + 1);
+void		reset_flags(t_flags *flags)
+{
+	flags->dot = 0;
+	flags->has_dot = 0;
+	flags->len = 0;
+	flags->minus = 0;
+	flags->star = 0;
+	flags->type = 0;
+	flags->width = 0;
+	flags->zero = 0;
 }

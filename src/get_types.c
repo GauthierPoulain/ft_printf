@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags_check.c                                      :+:      :+:    :+:   */
+/*   get_types.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 11:56:16 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 14:53:12 by gapoulai         ###   ########lyon.fr   */
+/*   Created: 2020/12/22 11:22:29 by gapoulai          #+#    #+#             */
+/*   Updated: 2020/12/22 13:47:40 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-t_flags	init_flags(void)
+void		get_type(t_flags *flags, va_list lst)
 {
-	t_flags		flags;
-
-	flags.dot = -1;
-	flags.minus = 0;
-	flags.star = 0;
-	flags.type = 0;
-	flags.width = 0;
-	flags.zero = 0;
-	return (flags);
-}
-
-int		istype(int c)
-{
-	return ((c == 'c') || (c == 's') || (c == 'p') || (c == 'd') || (c == 'i')
-		|| (c == 'u') || (c == 'x') || (c == 'X') || (c == '%'));
-}
-
-int		isflag(int c)
-{
-	return ((c == '-') || (c == ' ') || (c == '0') || (c == '.') || (c == '*'));
+	if (flags->type == 'c')
+		return ;
+	if (flags->type == 's')
+		return ;
+	if (flags->type == 'p')
+		return ;
+	if (flags->type == 'd' || flags->type == 'i')
+		print_int(flags, va_arg(lst, int));
+	if (flags->type == 'u')
+		return ;
+	if (flags->type == 'x')
+		return ;
+	if (flags->type == 'X')
+		return ;
+	if (flags->type == '%')
+		return ;
 }

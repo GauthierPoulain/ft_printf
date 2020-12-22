@@ -5,40 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 10:14:44 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/17 14:53:12 by gapoulai         ###   ########lyon.fr   */
+/*   Created: 2020/12/22 10:37:42 by gapoulai          #+#    #+#             */
+/*   Updated: 2020/12/22 14:51:55 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-// va_arg(lst, void *)
-
-int				ft_printf(const char *s, ...)
+int		ft_printf(const char *s, ...)
 {
-	int		len;
-	t_flags	flags;
-	va_list	lst;
+	va_list		lst;
+	t_flags		flags;
 
 	va_start(lst, s);
-	len = 0;
+	if (!s)
+		return (-1);
+	init_flags(&flags);
 	while (*s)
 	{
-		if (*s == '%')
+		if (*s == '%' && s[1])
 		{
-			flags = init_flags();
-			s++;
-			s += flag_parse(s, &flags, lst);
-			// printf("[%c, %c, %d]", flags.type, *s, istype(*s));
-			if (istype(*s))
-				len += get_type((char)flags.type, flags, lst);
-			else if (*s)
-				len += ft_putchar_fd(*s, 1);
-			s++;
+			s += parse_flags(&flags, lst, (char *)s);
+			if (ft_ischarset(*s, "cspdiuxX%"))
+			{
+				get_type(&flags, lst);
+				s++;
+			}
+			else
+				flags.print += ft_putchar_fd(*s, 1);
 		}
 		else
-			len += ft_putchar_fd(*s++, 1);
+			flags.print += ft_putchar_fd(*s++, 1);
 	}
 	va_end(lst);
-	return (len);
+	return (flags.print);
 }
