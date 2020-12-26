@@ -6,30 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 14:12:19 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/26 14:20:30 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/26 14:32:15 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-
-static	void	print_other(t_flags *flags, char *tmp)
-{
-	if (flags->minus)
-	{
-		flags->print +=ft_putstr_fd(tmp, 1);
-		print_width(flags->width, ft_strlen(tmp), 0, flags);
-	}
-	else if (flags->zero && !(flags->has_dot))
-	{
-		print_width(flags->width, ft_strlen(tmp), 1, flags);
-		flags->print += ft_putstr_fd(tmp, 1);
-	}
-	else
-	{
-		print_width(flags->width, ft_strlen(tmp), 0, flags);
-		flags->print += ft_putstr_fd(tmp, 1);
-	}
-}
 
 static void		ft_minus(t_flags *flags, char *tmp, unsigned int nbr)
 {
@@ -48,7 +29,7 @@ static void		ft_minus(t_flags *flags, char *tmp, unsigned int nbr)
 		}
 	}
 	else
-		print_other(flags, tmp);
+		print_spaces(flags, tmp);
 }
 
 static void		ft_print_dot(t_flags *flags, char *tmp)
@@ -77,7 +58,7 @@ void			print_unsigned(t_flags *flags, unsigned int nbr)
 		else if (flags->dot)
 			ft_print_dot(flags, tmp);
 		else
-			print_other(flags, tmp);
+			print_spaces(flags, tmp);
 	}
 	free(tmp);
 }

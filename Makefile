@@ -35,7 +35,7 @@ SRC = \
 	parse_flags.c \
 	get_types.c \
 	print_int.c \
-	print_width.c \
+	print_utils.c \
 	print_int_utils.c \
 	print_char.c \
 	print_string.c \

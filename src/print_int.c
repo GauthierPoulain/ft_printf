@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:33:17 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/22 15:02:15 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/26 14:44:38 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,6 @@ static void	int_minus(t_flags *flags, int nb, char *tmp)
 	}
 }
 
-static void	int_print_others(t_flags *flags, char *tmp)
-{
-	if (flags->minus)
-	{
-		flags->print += ft_putstr_fd(tmp, 1);
-		print_width(flags->width, ft_strlen(tmp), 0, flags);
-	}
-	else if (flags->zero && !flags->has_dot)
-	{
-		print_width(flags->width, ft_strlen(tmp), 1, flags);
-		flags->print += ft_putstr_fd(tmp, 1);
-	}
-	else
-	{
-		print_width(flags->width, ft_strlen(tmp), 0, flags);
-		flags->print += ft_putstr_fd(tmp, 1);
-	}
-}
-
 static void	int_print_zero(t_flags *flags, int nb, char *tmp)
 {
 	if (nb < 0)
@@ -84,7 +65,7 @@ static void	int_print_zero(t_flags *flags, int nb, char *tmp)
 		}
 	}
 	else
-		int_print_others(flags, tmp);
+		print_spaces(flags, tmp);
 }
 
 void		print_int(t_flags *flags, int nb)
@@ -97,7 +78,7 @@ void		print_int(t_flags *flags, int nb)
 		if (flags->has_dot)
 			int_minus(flags, nb, tmp);
 		else
-			int_print_others(flags, tmp);
+			print_spaces(flags, tmp);
 	}
 	else
 	{
@@ -108,7 +89,7 @@ void		print_int(t_flags *flags, int nb)
 		else if (flags->zero)
 			int_print_zero(flags, nb, tmp);
 		else
-			int_print_others(flags, tmp);
+			print_spaces(flags, tmp);
 	}
 	free(tmp);
 }
