@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_pointer.c                                    :+:      :+:    :+:   */
+/*   print_hexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 15:31:20 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/26 17:06:37 by gapoulai         ###   ########lyon.fr   */
+/*   Created: 2020/12/26 14:52:22 by gapoulai          #+#    #+#             */
+/*   Updated: 2020/12/26 15:07:14 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static void		ft_minus(t_flags *flags, char *tmp, unsigned long nbr)
+static void		ft_minus(t_flags *flags, char *tmp, unsigned int nbr)
 {
 	if (flags->has_dot)
 	{
@@ -32,37 +32,35 @@ static void		ft_minus(t_flags *flags, char *tmp, unsigned long nbr)
 		print_spaces(flags, tmp);
 }
 
-static void		ft_not_minus(t_flags *flags, char *tmp, int nbr)
+static void		ft_print_dot(t_flags *flags, char *tmp)
 {
-	if (!(flags->dot) && flags->has_dot && nbr == 0)
+	if ((int)ft_strlen(tmp) < flags->dot)
 		print_width(flags->width, flags->dot, 0, flags);
-	else if (flags->dot)
-	{
-		if ((int)ft_strlen(tmp) < flags->dot)
-			print_width(flags->width, flags->dot, 0, flags);
-		else
-			print_width(flags->width, ft_strlen(tmp), 0, flags);
-		print_width(flags->dot, ft_strlen(tmp), 1, flags);
-		flags->print += ft_putstr_fd(tmp, 1);
-	}
+	else if (flags->width > flags->dot && flags->dot > 0)
+		print_width(flags->width, ft_strlen(tmp), 0, flags);
 	else
-		print_spaces(flags, tmp);
+		print_width(flags->width, ft_strlen(tmp), flags->zero, flags);
+	print_width(flags->dot, ft_strlen(tmp), 1, flags);
+	flags->print += ft_putstr_fd(tmp, 1);
 }
 
-void			print_pointer(t_flags *flags, size_t adr)
+void			print_hexa(t_flags *flags, unsigned int nbr, int caps)
 {
-	char	*tmp;
-	char	*res;
+	char *tmp;
 
-	tmp = ft_uitoa_base(adr, 16);
-	if (adr)
-		res = ft_strjoin("0x", tmp);
-	else
-		res = ft_strdup("(nil)");
-	free(tmp);
+	tmp = ft_itoa_base(nbr, 16);
+	if (caps)
+		ft_touppercase(tmp);
 	if (flags->minus)
-		ft_minus(flags, res, adr);
+		ft_minus(flags, tmp, nbr);
 	else
-		ft_not_minus(flags, res, adr);
-	free(res);
+	{
+		if (!(flags->dot) && flags->has_dot && nbr == 0)
+			print_width(flags->width, flags->dot, 0, flags);
+		else if (flags->dot)
+			ft_print_dot(flags, tmp);
+		else
+			print_spaces(flags, tmp);
+	}
+	free(tmp);
 }

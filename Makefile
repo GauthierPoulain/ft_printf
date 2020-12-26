@@ -41,6 +41,8 @@ SRC = \
 	print_string.c \
 	print_pointer.c \
 	print_unisgned.c \
+	print_hexa.c \
+	print_percent.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(basename $(SRC))))
