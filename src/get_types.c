@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:22:29 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/26 14:03:31 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/26 14:21:42 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		get_type(t_flags *flags, va_list lst)
 	if (flags->type == 'd' || flags->type == 'i')
 		print_int(flags, va_arg(lst, int));
 	if (flags->type == 'u')
-		return ;
+		print_unsigned(flags, va_arg(lst, unsigned int));
 	if (flags->type == 'x')
 		return ;
 	if (flags->type == 'X')
