@@ -6,11 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 15:31:20 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/26 17:06:37 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 19:01:04 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/libft_printf.h"
 
 static void		ft_minus(t_flags *flags, char *tmp, unsigned long nbr)
 {

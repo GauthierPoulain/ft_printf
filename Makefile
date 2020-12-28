@@ -26,7 +26,7 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
 MAKE = make --no-print-directory
 
-HEADER = ft_printf.h
+HEADER = includes/libft_printf.h
 SRC_DIR = src
 
 SRC = \

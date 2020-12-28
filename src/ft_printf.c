@@ -6,11 +6,11 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 10:37:42 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/22 14:51:55 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 19:01:04 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../includes/libft_printf.h"
 
 int		ft_printf(const char *s, ...)
 {
