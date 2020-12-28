@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 14:52:17 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/26 17:59:48 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 18:41:12 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void		int_print_dot(t_flags *flags, int nb, char *str)
 			print_width(flags->width, ft_strlen(str), 0, flags);
 		else
 			print_width(flags->width, ft_strlen(str), flags->zero, flags);
-		// if (flags->star)
-		// 	print_width(flags->dot, flags->width, 0, flags);
 		print_width(flags->dot, ft_strlen(str), 1, flags);
 		flags->print += ft_putstr_fd(str, 1);
 	}
