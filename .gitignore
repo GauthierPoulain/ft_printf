@@ -1,3 +1,5 @@
 42TESTERS-PRINTF/
 ptf/
 printftester/
+*.o
+*.a
