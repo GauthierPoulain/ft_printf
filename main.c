@@ -6,9 +6,9 @@ int main()
 {
 	int		size;
 
-	size = ft_printf("%.03s", NULL);
+	size = ft_printf("%p", NULL);
 	ft_printf("$\n");
-	ft_printf("%.03s", NULL);
+	printf("%p", NULL);
 	printf("$\n");
 	return (size);
 }

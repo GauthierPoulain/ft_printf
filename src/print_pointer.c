@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 15:31:20 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/28 19:01:04 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/03 01:55:36 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			print_pointer(t_flags *flags, size_t adr)
 	if (adr)
 		res = ft_strjoin("0x", tmp);
 	else
-		res = ft_strdup("(nil)");
+		res = ft_strjoin("0x", "0");
 	free(tmp);
 	if (flags->minus)
 		ft_minus(flags, res, adr);
