@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:22:29 by gapoulai          #+#    #+#             */
-/*   Updated: 2021/01/03 02:45:20 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/03 02:53:10 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		get_type(t_flags *flags, va_list lst)
 		print_unsigned(flags, va_arg(lst, unsigned int));
 	if (flags->type == 'x' || flags->type == 'X')
 		print_base(flags, 16, va_arg(lst, unsigned int), flags->type == 'X');
-	if (flags->type == 'o' ||flags->type == 'O')
+	if (flags->type == 'o' || flags->type == 'O')
 		print_base(flags, 8, va_arg(lst, unsigned int), flags->type == 'O');
 	if (flags->type == '%')
 		print_percent(flags);

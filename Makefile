@@ -23,8 +23,7 @@ _IWHITE=\033[47m
 NAME = libftprintf.a
 
 CC = clang
-# CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
-CFLAGS = -Wall -Wextra -fno-builtin -O3
+CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
 MAKE = make --no-print-directory
 
 HEADER = includes/libft_printf.h
