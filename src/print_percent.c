@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 17:20:17 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/28 19:01:04 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/03 01:35:45 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	print_percent(t_flags *flags)
 {
-	flags->print += ft_putchar_fd('%', 1);
+	print_char(flags, '%');
 }
