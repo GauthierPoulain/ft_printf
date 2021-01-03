@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 18:58:25 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/28 18:59:02 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/03 02:03:53 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_flags
 	int			width;
 	char		type;
 	int			len;
+	int			space;
 	char *tmp;
 }				t_flags;
 

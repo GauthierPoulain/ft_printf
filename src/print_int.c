@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:33:17 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/28 19:01:04 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/03 02:12:17 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void		print_int(t_flags *flags, int nb)
 	char	*tmp;
 
 	tmp = ft_itoa(nb);
+	if (flags->space)
+		flags->print += ft_putchar_fd(' ', 1);
 	if (flags->minus)
 	{
 		if (flags->has_dot)

@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 11:28:37 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/28 19:01:04 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/03 02:10:03 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int			parse_flags(t_flags *flags, va_list lst, char *s)
 {
 	int		i;
 
-	i = 1;
+	i = 0;
 	reset_flags(flags);
-	while (!ft_ischarset(s[i], "cspdiuxX%"))
+	if (s[1] == ' ')
+		flags->space = 1;
+	while (!ft_ischarset(s[++i], "cspdiuxX%") && !flags->type)
 	{
 		if (s[i] == '0' && flags->width == 0 && flags->minus == 0)
 			flags->zero = 1;
@@ -31,11 +33,7 @@ int			parse_flags(t_flags *flags, va_list lst, char *s)
 		if (ft_isdigit(s[i]))
 			parse_digit(s[i], flags);
 		if (ft_ischarset(s[i], "cspdiuxX%"))
-		{
-			flags->type = s[i];
-			break ;
-		}
-		i++;
+			i--;
 	}
 	flags->type = s[i];
 	return (i);
