@@ -23,7 +23,8 @@ _IWHITE=\033[47m
 NAME = libftprintf.a
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
+# CFLAGS = -Wall -Wextra -Werror -fno-builtin -O3
+CFLAGS = -Wall -Wextra -fno-builtin -O3
 MAKE = make --no-print-directory
 
 HEADER = includes/libft_printf.h
@@ -41,7 +42,7 @@ SRC = \
 	print_string.c \
 	print_pointer.c \
 	print_unisgned.c \
-	print_hexa.c \
+	print_base.c \
 	print_percent.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))

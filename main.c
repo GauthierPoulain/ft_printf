@@ -6,9 +6,9 @@ int main()
 {
 	int		size;
 
-	size = ft_printf("%% *.5i 42 == |% *.5i|", 4, 42);
+	size = ft_printf("% .*o", -3, 12345);
 	ft_printf("$\n");
-	printf("%% *.5i 42 == |%      *.5i|", 4, 42);
+	printf("% .*o", -3, 12345);
 	printf("$\n");
 	return (size);
 }

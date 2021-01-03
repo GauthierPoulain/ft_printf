@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 10:37:42 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/28 19:01:04 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/03 02:42:53 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_printf(const char *s, ...)
 		if (*s == '%' && s[1])
 		{
 			s += parse_flags(&flags, lst, (char *)s);
-			if (ft_ischarset(*s, "cspdiuxX%"))
+			if (ft_ischarset(*s, CHARSET))
 			{
 				get_type(&flags, lst);
 				s++;
