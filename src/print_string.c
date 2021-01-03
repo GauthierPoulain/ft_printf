@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 15:21:26 by gapoulai          #+#    #+#             */
-/*   Updated: 2020/12/28 19:01:04 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/03 01:51:47 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void		print_string(t_flags *flags, char *str)
 {
 	size_t	len;
 
-	len = ft_strlen(str);
 	if (!str)
 		str = "(null)";
+	len = ft_strlen(str);
 	if (flags->dot >= 0 && (size_t)flags->dot > ft_strlen(str))
 		flags->dot = ft_strlen(str);
 	if (flags->minus)
