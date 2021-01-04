@@ -61,11 +61,13 @@ $(NAME): $(OBJS)
 	@$(AR) rcs $(NAME) $(OBJS)
 
 clean:
-	@find ./src -name "*.o" -delete -printf "[ $(_RED)$(_BOLD)--$(_END) ][ removing ] $(_BLUE)$(_BOLD)%f $(_END)\n"
+	@$(RM) $(OBJS)
+	@printf "[ $(_RED)$(_BOLD)--$(_END) ][ removing ] $(_BLUE)$(_BOLD)objs $(_END)\n"
 	@$(MAKE) clean -C ./libft
 
 fclean: clean
-	@find . -name "$(NAME)" -delete -printf "[ $(_RED)$(_BOLD)--$(_END) ][ removing ] $(_BLUE)$(_BOLD)%f $(_END)\n"
+	@$(RM) $(NAME)
+	@printf "[ $(_RED)$(_BOLD)--$(_END) ][ removing ] $(_BLUE)$(_BOLD)$(NAME) $(_END)\n"
 	@$(MAKE) fclean -C ./libft
 
 re: fclean

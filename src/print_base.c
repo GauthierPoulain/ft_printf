@@ -6,7 +6,7 @@
 /*   By: gapoulai <gapoulai@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 14:52:22 by gapoulai          #+#    #+#             */
-/*   Updated: 2021/01/03 02:43:40 by gapoulai         ###   ########lyon.fr   */
+/*   Updated: 2021/01/04 13:57:33 by gapoulai         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			print_base(t_flags *flags, int base, unsigned int nbr, int caps)
 {
 	char *tmp;
 
-	tmp = ft_itoa_base(nbr, base);
+	tmp = ft_uitoa_base(nbr, base);
 	if (caps)
 		ft_touppercase(tmp);
 	if (flags->minus)

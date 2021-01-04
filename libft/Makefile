@@ -118,10 +118,12 @@ re: fclean
 	@$(MAKE) all
 
 clean:
-	@find . -name "*.o" -delete -printf "[ $(_RED)$(_BOLD)--$(_END) ][ removing ] $(_BLUE)$(_BOLD)%f $(_END)\n"
+	@$(RM) $(OBJS)
+	@printf "[ $(_RED)$(_BOLD)--$(_END) ][ removing ] $(_BLUE)$(_BOLD)objs $(_END)\n"
 
 fclean: clean
-	@find . -name "$(NAME)" -delete -printf "[ $(_RED)$(_BOLD)--$(_END) ][ removing ] $(_BLUE)$(_BOLD)%f $(_END)\n"
+	@$(RM) $(NAME)
+	@printf "[ $(_RED)$(_BOLD)--$(_END) ][ removing ] $(_BLUE)$(_BOLD)$(NAME) $(_END)\n"
 
 norm:
 	@norminette *.[ch]
