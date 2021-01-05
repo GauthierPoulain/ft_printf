@@ -83,7 +83,6 @@ comp: all
 	@${CC} ${CFLAGS} main.c -L. -lftprintf -o test
 
 norm:
-	norminette **/**.[ch]
-	norminette *.[ch]
+	norminette **/**.[ch] *.[ch]
 
 .PHONY: all clean fclean re test comp norm
